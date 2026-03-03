@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMNOVA - Sensor Dashboard</title>
+    <link rel="stylesheet" href="DESIGN.css">
+</head>
+<body>
+
+    <div id="login-section">
+        <div class="login-wrapper">
+            <h1 class="main-title">FARMNOVA</h1>
+            <div class="login-box">
+                <div class="login-content">
+                    <h2 class="login-subtitle">LOGIN</h2>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <label for="username">Username</label>
+                            <input type="text" id="username" placeholder="Enter your username" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="login-btn">Access Dashboard</button>
+                        <p id="errorMessage" class="error-message"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dashboard-section" style="display: none;">
+        <div class="dashboard-wrapper">
+            <header class="dashboard-header">
+                <div>
+                    <h1>FARMNOVA</h1>
+                    <p>Live ESP32 Sensor Network</p>
+                </div>
+                <div class="header-buttons">
+                    <button id="refreshBtn" class="refresh-btn">Refresh</button>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </header>
+
+            <div class="grid-container">
+                <div class="card border-blue">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="1" data-assigned="LDR" data-desired="" data-pin="">LDR</h3>
+                        <p id="s1-val">Loading...</p>
+                        <p id="s1-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-orange">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="2" data-assigned="LDR" data-desired="" data-pin="">LDR</h3>
+                        <p id="s2-val">Loading...</p>
+                        <p id="s2-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-purple">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="3" data-assigned="MQ135" data-desired="" data-pin="">MQ135</h3>
+                        <p id="s3-val">Loading...</p>
+                        <p id="s3-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-green">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="4" data-assigned="MQ135" data-desired="" data-pin="">MQ135</h3>
+                        <p id="s4-val">Loading...</p>
+                        <p id="s4-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-red">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="5" data-assigned="Soil Moisture" data-desired="" data-pin="">SOIL MOISTURE</h3>
+                        <p id="s5-val">Loading...</p>
+                        <p id="s5-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-cyan">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="6" data-assigned="Soil Moisture" data-desired="" data-pin="">SOIL MOISTURE</h3>
+                        <p id="s6-val">Loading...</p>
+                        <p id="s6-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-yellow">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="7" data-assigned="Temperature" data-desired="" data-pin="">TEMPERATURE</h3>
+                        <p id="s7-val">Loading...</p>
+                        <p id="s7-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-pink">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="8" data-assigned="Humidity" data-desired="" data-pin="">HUMIDITY</h3>
+                        <p id="s8-val">Loading...</p>
+                        <p id="s8-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-teal">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="9" data-assigned="Temperature" data-desired="" data-pin="">TEMPERATURE</h3>
+                        <p id="s9-val">Loading...</p>
+                        <p id="s9-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <div class="card border-indigo">
+                    <div class="icon-box">📡</div>
+                    <div class="card-text">
+                        <h3 data-id="10" data-assigned="Humidity" data-desired="" data-pin="">HUMIDITY</h3>
+                        <p id="s10-val">Loading...</p>
+                        <p id="s10-desired" class="desired-display">Desired: --</p>
+                    </div>
+                    <label class="toggle-container">
+                        <input type="checkbox" class="sensor-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sensorModal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <h3>Configure Sensor</h3>
+            <div class="input-group">
+                <label for="sensorDesired">Desired Value</label>
+                <input type="number" step="any" id="sensorDesired" placeholder="Enter desired value">
+            </div>
+            <div class="input-group">
+                <label for="sensorPin">Output Pin</label>
+                <select id="sensorPin">
+                    <option value="" disabled selected>Select an output pin...</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button id="cancelModalBtn" class="cancel-btn">Cancel</button>
+                <button id="saveModalBtn" class="save-btn">Apply</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="SCRIPT.js"></script>
+</body>
+</html>
