@@ -1,0 +1,49 @@
+// 1. Handle GET requests (When the website asks to READ the live data)
+function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+  var action = e.parameter.action;
+  
+  if (action == "read") {
+    // Grab all data from Row 2 down to Row 10 (Sensors 1 through 9)
+    var data = sheet.getRange("A2:F11").getValues();
+    var result = [];
+    
+    // Loop through the rows and format them cleanly for the website
+    for (var i = 0; i < data.length; i++) {
+      result.push({
+        "pin": data[i][0],            // Sensor 1-9
+        "enable": data[i][1],         // 0 or 1
+        "type": data[i][2],           // 1-5 mapping
+        "out_pin": data[i][3],        // pin0 - pin9
+        "desired_value": data[i][4],  // Number
+        "live": data[i][5]            // Number from ESP32
+      });
+    }
+    
+    // Send it back to the website
+    return ContentService.createTextOutput(JSON.stringify(result))
+                         .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// 2. Handle POST requests (When the website asks to WRITE/SAVE new settings)
+function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Sheet1");
+  var action = e.parameter.action;
+  
+  if (action == "write") {
+    var pinNumber = parseInt(e.parameter.pin);
+    
+    // Because Row 1 is headers, Sensor 1 is on Row 2, Sensor 2 is on Row 3, etc.
+    var rowToUpdate = pinNumber + 1; 
+    
+    // Update the columns (Enable, Type, Out Pin, Desired Value)
+    // We intentionally leave Column 6 alone because only the ESP32 updates the 'live' reading!
+    sheet.getRange(rowToUpdate, 2).setValue(e.parameter.enable);
+    sheet.getRange(rowToUpdate, 3).setValue(e.parameter.type);
+    sheet.getRange(rowToUpdate, 4).setValue(e.parameter.out_pin);
+    sheet.getRange(rowToUpdate, 5).setValue(e.parameter.desired);
+    
+    return ContentService.createTextOutput("Configuration Saved Successfully");
+  }
+}
