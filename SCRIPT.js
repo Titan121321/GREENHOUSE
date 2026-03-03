@@ -1,7 +1,7 @@
 // =========================================
 // GOOGLE SHEETS API SETUP
 // =========================================
-const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwXvfFBvpTVGJ3e2MCFXwz7ILChRiMgclI4Wor75xS8z4PPn9RlxPlAKgzOpaEq34KA/exec"; // PASTE YOUR URL HERE
+const GOOGLE_APP_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwAc5E5vjP6uXcUf57DVrH3ov9-SmXcna3mg-OiGkX9eb6Jq9fjKeNUs0jGTUIaBc9I/exec"; // PASTE YOUR URL HERE
 
 // Mapping table to convert text into numbers for Google Sheets
 const REVERSE_TYPE_MAP = { "LDR": 1, "Temperature": 2, "Humidity": 3, "MQ135": 4, "Soil Moisture": 5 };
